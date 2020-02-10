@@ -1,12 +1,12 @@
 ![](assets/noun_181229_cc.png)
 
-# dotnet-Contrib.Microsoft.Build.TypeLibrary
+# msbuild-Contrib.Microsoft.Build.TypeLibrary
 
 > Create _.tlb_-files ([Type Library](https://msdn.microsoft.com/en-us/library/windows/desktop/aa366757)) upon compilation.
 
 ## Build status
 
-[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-microsoft-build-typelibrary.svg)](https://ci.appveyor.com/project/dittodhole/dotnet-contrib-microsoft-build-typelibrary)
+[![](https://img.shields.io/appveyor/ci/dittodhole/msbuild-contrib-microsoft-build-typelibrary.svg)](https://ci.appveyor.com/project/dittodhole/msbuild-contrib-microsoft-build-typelibrary)
 
 ## Installing
 
