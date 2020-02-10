@@ -74,26 +74,4 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  <!--
-  <Target Name="CreateTypeLibrary" AfterTargets="CopyFilesToOutputDirectory">
-    <PropertyGroup>
-      <ContribMSBuildTypeLibrary_Assembly>$(TargetPath)</ContribMSBuildTypeLibrary_Assembly>
-      <CreateTypeLibraryProperties>
-        ContribMSBuildTypeLibrary_Active=$(ContribMSBuildTypeLibrary_Active);
-        ContribMSBuildTypeLibrary_Assembly=$(ContribMSBuildTypeLibrary_Assembly);
-        ContribMSBuildTypeLibrary_CreateTypeLibrary_BeforeTargets=$(ContribMSBuildTypeLibrary_CreateTypeLibrary_BeforeTargets);
-        ContribMSBuildTypeLibrary_CreateTypeLibrary_AfterTargets=$(ContribMSBuildTypeLibrary_CreateTypeLibrary_AfterTargets);
-        TargetPath=$(TargetPath);
-        ContribMSBuildTypeLibrary_RegAsmExe=$(ContribMSBuildTypeLibrary_RegAsmExe);
-        ContribMSBuildTypeLibrary_RegAsmPath=$(ContribMSBuildTypeLibrary_RegAsmPath);
-        ContribMSBuildTypeLibrary_TlbExpExe=$(ContribMSBuildTypeLibrary_TlbExpExe);
-        ContribMSBuildTypeLibrary_TlbExpPath=$(ContribMSBuildTypeLibrary_TlbExpPath);
-      </CreateTypeLibraryProperties>
-    </PropertyGroup>
-    <MSBuild Projects="$(MSBuildProjectDirectory)\build\Contrib.MSBuild.TypeLibrary.targets"
-             UnloadProjectsOnCompletion="true"
-             Properties="$(CreateTypeLibraryProperties)"
-             Targets="CreateTypeLibrary" />
-  </Target>
-  -->
 </Project>
