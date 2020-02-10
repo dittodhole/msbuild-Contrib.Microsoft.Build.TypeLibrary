@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="build\Contrib.Microsoft.Build.TypeLibrary.props" />
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Contrib.Microsoft.Build.TypeLibrary</PackageId>
+    <Authors>dittodhole</Authors>
+    <developmentDependency>true</developmentDependency>
+    <PackageDescription>Create .tlb-files (Type Library) upon compilation.</PackageDescription>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/dittodhole/dotnet-Contrib.Microsoft.Build.TypeLibrary</PackageProjectUrl>
+    <PackageIcon>noun_181229_cc.png</PackageIcon>
+    <PackageTags />
+    <PackageType>Dependency</PackageType>
+    <RepositoryUrl>https://github.com/dittodhole/dotnet-Contrib.Microsoft.Build.TypeLibrary.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="NETStandard.Library" Version="2.0.3" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="5.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Update="@(PackageReference)">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Update="GitVersionTask" Version="5.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build\Contrib.Microsoft.Build.TypeLibrary.props">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </None>
+    <None Include="build\Contrib.Microsoft.Build.TypeLibrary.targets">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </None>
+    <None Include="buildMultiTargeting\Contrib.Microsoft.Build.TypeLibrary.props">
+      <Pack>true</Pack>
+      <PackagePath>buildMultiTargeting</PackagePath>
+    </None>
+    <None Include="buildMultiTargeting\Contrib.Microsoft.Build.TypeLibrary.targets">
+      <Pack>true</Pack>
+      <PackagePath>buildMultiTargeting</PackagePath>
+    </None>
+    <Compile Include="RegAsm.cs" />
+    <Compile Include="TlbExp.cs" />
+    <None Include="..\..\LICENSE.txt">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\assets\noun_181229_cc.png">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <!--
+  <Target Name="CreateTypeLibrary" AfterTargets="CopyFilesToOutputDirectory">
+    <PropertyGroup>
+      <ContribMSBuildTypeLibrary_Assembly>$(TargetPath)</ContribMSBuildTypeLibrary_Assembly>
+      <CreateTypeLibraryProperties>
+        ContribMSBuildTypeLibrary_Active=$(ContribMSBuildTypeLibrary_Active);
+        ContribMSBuildTypeLibrary_Assembly=$(ContribMSBuildTypeLibrary_Assembly);
+        ContribMSBuildTypeLibrary_CreateTypeLibrary_BeforeTargets=$(ContribMSBuildTypeLibrary_CreateTypeLibrary_BeforeTargets);
+        ContribMSBuildTypeLibrary_CreateTypeLibrary_AfterTargets=$(ContribMSBuildTypeLibrary_CreateTypeLibrary_AfterTargets);
+        TargetPath=$(TargetPath);
+        ContribMSBuildTypeLibrary_RegAsmExe=$(ContribMSBuildTypeLibrary_RegAsmExe);
+        ContribMSBuildTypeLibrary_RegAsmPath=$(ContribMSBuildTypeLibrary_RegAsmPath);
+        ContribMSBuildTypeLibrary_TlbExpExe=$(ContribMSBuildTypeLibrary_TlbExpExe);
+        ContribMSBuildTypeLibrary_TlbExpPath=$(ContribMSBuildTypeLibrary_TlbExpPath);
+      </CreateTypeLibraryProperties>
+    </PropertyGroup>
+    <MSBuild Projects="$(MSBuildProjectDirectory)\build\Contrib.MSBuild.TypeLibrary.targets"
+             UnloadProjectsOnCompletion="true"
+             Properties="$(CreateTypeLibraryProperties)"
+             Targets="CreateTypeLibrary" />
+  </Target>
+  -->
+</Project>
