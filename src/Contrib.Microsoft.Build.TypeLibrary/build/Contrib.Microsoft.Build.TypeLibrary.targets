@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="TlbExp" AssemblyFile="$(ContribMicrosoftBuildTypeLibrary_Assembly)" />
+  <UsingTask TaskName="RegAsm" AssemblyFile="$(ContribMicrosoftBuildTypeLibrary_Assembly)" />
+  <Target Name="CreateTypeLibrary" BeforeTargets="$(ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_BeforeTargets)" AfterTargets="$(ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_AfterTargets)" Condition="'$(ContribMicrosoftBuildTypeLibrary_Active)' == 'True'">
+    <ItemGroup>
+      <ContribMicrosoftBuildTypeLibrary_Assemblies Condition="'@(ContribMicrosoftBuildTypeLibrary_Assemblies)' == ''" Include="$(TargetPath)" />
+    </ItemGroup>
+    <Message Text="MSBuildBinPath:             $(MSBuildBinPath)" />
+    <Message Text="MSBuildExtensionsPath:      $(MSBuildExtensionsPath)" />
+    <Message Text="MSBuildExtensionsPath32:    $(MSBuildExtensionsPath32)" />
+    <Message Text="MSBuildExtensionsPath64:    $(MSBuildExtensionsPath64)" />
+    <Message Text="MSBuildRuntimeType:         $(MSBuildRuntimeType)" />
+    <Message Text="MSBuildStartupDirectory:    $(MSBuildStartupDirectory)" />
+    <Message Text="MSBuildToolsPath:           $(MSBuildToolsPath)"/>
+    <Message Text="MSBuildToolsVersion:        $(MSBuildToolsVersion)" />
+    <Message Text="MSBuildVersion:             $(MSBuildVersion)" />
+    <Message Text="_BeforeTargets:             $(ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_BeforeTargets)" />
+    <Message Text="_AfterTargets:              $(ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_AfterTargets)" />
+    <Message Text="_Assembly:                  $(ContribMicrosoftBuildTypeLibrary_Assembly)" />
+    <Message Text="_Assemblies:                %(ContribMicrosoftBuildTypeLibrary_Assemblies.Identity)" />
+    <Message Text="_RegAsmExe:                 $(ContribMicrosoftBuildTypeLibrary_RegAsmExe)" />
+    <Message Text="_RegAsmPath:                $(ContribMicrosoftBuildTypeLibrary_RegAsmPath)" />
+    <Message Text="_TlbExpExe:                 $(ContribMicrosoftBuildTypeLibrary_TlbExpExe)" />
+    <Message Text="_TlbExpPath:                $(ContribMicrosoftBuildTypeLibrary_TlbExpPath)" />
+    <TlbExp Assembly="@(ContribMicrosoftBuildTypeLibrary_Assemblies)"
+            ToolExe="$(ContribMicrosoftBuildTypeLibrary_TlbExpExe)"
+            ToolPath="$(ContribMicrosoftBuildTypeLibrary_TlbExpPath)">
+      <Output TaskParameter="TlbFile" ItemName="FileWrites" />
+      <Output TaskParameter="TlbFile" ItemName="BuiltProjectOutputGroupOutput" />
+      <Output TaskParameter="TlbFile" ItemName="ContribMicrosoftBuildTypeLibrary_OutputFiles" />
+    </TlbExp>
+    <RegAsm Assembly="@(ContribMicrosoftBuildTypeLibrary_Assemblies)"
+            ToolExe="$(ContribMicrosoftBuildTypeLibrary_RegAsmExe)"
+            ToolPath="$(ContribMicrosoftBuildTypeLibrary_RegAsmPath)">
+      <Output TaskParameter="RegFile" ItemName="FileWrites" />
+      <Output TaskParameter="RegFile" ItemName="BuiltProjectOutputGroupOutput" />
+      <Output TaskParameter="RegFile" ItemName="ContribMicrosoftBuildTypeLibrary_OutputFiles" />
+    </RegAsm>
+    <Message Text="_OutputFiles:               %(ContribMicrosoftBuildTypeLibrary_OutputFiles.Identity)" />
+  </Target>
+</Project>
