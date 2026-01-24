@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ContribMicrosoftBuildTypeLibrary_Active>False</ContribMicrosoftBuildTypeLibrary_Active>
+    <ContribMicrosoftBuildTypeLibrary_Active Condition="'$(Configuration)' == 'Release'">True</ContribMicrosoftBuildTypeLibrary_Active>
+    <ContribMicrosoftBuildTypeLibrary_Assembly Condition="'$(ContribMicrosoftBuildTypeLibrary_Assembly)' == '' And '$(MSBuildRuntimeType)' == 'Full'">$(MSBuildThisFileDirectory)..\tasks\net46\Contrib.Microsoft.Build.TypeLibrary.dll</ContribMicrosoftBuildTypeLibrary_Assembly>
+    <ContribMicrosoftBuildTypeLibrary_Assembly Condition="'$(ContribMicrosoftBuildTypeLibrary_Assembly)' == '' And '$(MSBuildRuntimeType)' == 'Core'">$(MSBuildThisFileDirectory)..\tasks\netstandard2.0\Contrib.Microsoft.Build.TypeLibrary.dll</ContribMicrosoftBuildTypeLibrary_Assembly>
+    <ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_AfterTargets Condition="'$(ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_AfterTargets)' == ''">CopyFilesToOutputDirectory</ContribMicrosoftBuildTypeLibrary_CreateTypeLibrary_AfterTargets>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.tlb;.reg</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+</Project>
